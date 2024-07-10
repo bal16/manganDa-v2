@@ -9,11 +9,11 @@ Students often have busy daily schedules, whether it's attending classes, workin
 ## Tech-Stack
 
 1. Laravel-InertiaJs as the fullstack framework
-2. React as the frontend framework
-3. daisyUI as the UI library
+2. React-Typescript as the frontend framework
+3. Axios for HTTP requests
 4. MySQL as the database
-5. Tailwind CSS as the CSS framework
-6. Axios for HTTP requests
+5. daisyUI as the UI library
+6. Tailwind CSS as the CSS framework
 
 ## Installation
 
