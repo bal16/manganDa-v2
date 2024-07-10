@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
+    //
+});
+
+Route::get('/welcome', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -25,3 +29,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
+// require __DIR__.'/profile.php';
+// require __DIR__.'/store.php';
+// require __DIR__.'/menu.php';
+// require __DIR__.'/post.php';
+// require __DIR__.'/bookmark.php';
+// require __DIR__.'/rating.php';
+// require __DIR__.'/report.php';
