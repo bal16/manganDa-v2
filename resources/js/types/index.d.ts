@@ -1,3 +1,5 @@
+import { ChangeEventHandler, ReactNode } from "react";
+
 export interface User {
     id: number;
     username: string;
@@ -12,6 +14,13 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
 };
 
 export type AuthLayoutProps = {
-    children: React.ReactNode;
+    children: ReactNode;
     title: 'Login'|'Register';
 }
+
+export type PasswordInputProps = {
+    value: string;
+    onChange: ChangeEventHandler;
+    className: string;
+    error?: string;
+};
