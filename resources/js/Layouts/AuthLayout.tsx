@@ -1,13 +1,9 @@
 import ApplicationLogo from "@/Components/ApplicationLogo";
+import { AuthLayoutProps } from "@/types";
 import { Head, Link } from "@inertiajs/react";
-import { FormEventHandler, PropsWithChildren } from "react";
 
-type LayoutProps = {
-    children: React.ReactNode;
-    title: 'Login'|'Register';
-    submitAction: FormEventHandler;
-}
-export default function AuthLayout({ children, title, submitAction }: LayoutProps) {
+
+export default function AuthLayout({ children, title }: AuthLayoutProps) {
     return (
         <div className="min-h-screen py-16 bg-green-500 place-content-center">
             <Head title={title} />
@@ -26,9 +22,7 @@ export default function AuthLayout({ children, title, submitAction }: LayoutProp
                     <p className="text-center text-gray-600 text-l">
                         {title=='Login'?'Welcome back!':'Create your account'}
                     </p>
-                    <form onSubmit={submitAction}>
                     {children}
-                    </form>
                     <div className="flex items-center justify-between mt-4">
                         <span className="w-1/5 border-b md:w-1/4"></span>
                         <Link

@@ -30,7 +30,7 @@ export default function Register() {
     };
 
     return (
-        <AuthLayout title="Register" submitAction={submit}>
+        <form onSubmit={submit}>
             <div className="mt-4">
                 <InputLabel className="block mb-2 text-sm font-bold text-gray-700">
                     Username
@@ -115,6 +115,7 @@ export default function Register() {
             >
                 Register
             </PrimaryButton>
-        </AuthLayout>
+        </form>
     );
 }
+Register.layout = (page:React.ReactNode) => <AuthLayout children={page} title="Register"  />

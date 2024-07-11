@@ -14,7 +14,7 @@ export default function Login({
     status?: string;
     canResetPassword: boolean;
 }) {
-    const [isShow, setIsShow] = useState(false);
+    const [isShow, setIsShow] = useState<boolean>(false);
     const { data, setData, post, processing, errors, reset } = useForm({
         key: "",
         password: "",
@@ -34,7 +34,7 @@ export default function Login({
     };
 
     return (
-        <AuthLayout title="Login" submitAction={submit}>
+        <form onSubmit={submit}>
             {status && (
                 <div className="mb-4 text-sm font-medium text-green-600">
                     {status}
@@ -74,9 +74,6 @@ export default function Login({
                             {isShow?(<PiEye />):
                             (<PiEyeClosedDuotone />)}
                         </span>
-                        {/* <FontAwesomeIcon
-                                icon={isShow ? faEye : faEyeSlash}
-                            /> */}
                     </label>
                 </div>
                 <InputError message={errors.password} className="mt-2" />
@@ -100,6 +97,8 @@ export default function Login({
             >
                 Login
             </PrimaryButton>
-        </AuthLayout>
+        </form>
     );
 }
+
+Login.layout = (page:React.ReactNode) => <AuthLayout children={page} title="Login"  />
