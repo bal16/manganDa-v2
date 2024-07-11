@@ -6,7 +6,7 @@ const NavLink = ({ active = false, className = '', children, ...props }: Inertia
   return (
     <Link
             {...props}
-            className={clsx("flex items-center p-2  rounded-lg  hover:text-primary-950  hover:bg-ecru-white-300 w-full",{"text-primary-950 bg-ecru-white-300":active==false}, { "text-primary-600 ":active==true}, className)}
+            className={clsx("flex items-center p-2  rounded-lg  hover:text-primary-950  hover:bg-primary-300 w-full",{"text-primary-950 bg-primary-300":active==true}, { "text-primary-900 ":active==false}, className)}
         >
             {children}
         </Link>

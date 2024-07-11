@@ -3,44 +3,44 @@ import ResponsiveNavLink from "../ResponsiveNavLink2";
 import { IoCompassOutline } from "react-icons/io5";
 import { PiStorefrontDuotone } from "react-icons/pi";
 import { FaUser } from "react-icons/fa";
-import { BiLogOut } from "react-icons/bi";
+import { RiBookmarkLine } from "react-icons/ri";
 
 const NavbarRes = () => {
     return (
-        <nav className="sticky bottom-0 w-full h-16 p-1 pb-2 text-center border-t-[0.1px] sm:hidden border-marshland-950  bg-ecru-white-100 grid grid-cols-5 ">
+        <nav className="sticky bottom-0 w-full h-16 p-1 pb-2 text-center border-t-[0.1px] sm:hidden border-primary-950  bg-primary-50 grid grid-cols-5 ">
             <ResponsiveNavLink
-                active={route().current("home")}
-                href={route("home")}
+                active={false}
+                href={'#'}
             >
                 <span className="items-center block w-8  align-middle ps-[0.1rem]">
-                    <HiHome width="1.7rem" height="2rem" />
+                    <HiHome size="2rem" />
                 </span>
             </ResponsiveNavLink>
             <ResponsiveNavLink
-                active={route().current("explore")}
+                active={false}
                 href="/explore"
             >
                 <IoCompassOutline size="2rem" />
             </ResponsiveNavLink>
 
             <ResponsiveNavLink
-                active={route().current("stores")}
+                active={false}
                 href="/stores"
             >
                 <PiStorefrontDuotone size="2rem" />
             </ResponsiveNavLink>
             <ResponsiveNavLink
-                active={route().current("bookmark")}
+                active={false}
                 href="/bookmark"
             >
                 {/*  href={`#${auth.user.id}`}> */}
-                <FaUser size="2rem" />
+                <RiBookmarkLine size="2rem" className="p-1" />
             </ResponsiveNavLink>
             <ResponsiveNavLink
-                active={route().current("profile")}
+                active={false}
                 href="/profile"
             >
-                <BiLogOut size="2rem" />
+                <FaUser size="2rem"  className="p-1" />
             </ResponsiveNavLink>
         </nav>
     );
