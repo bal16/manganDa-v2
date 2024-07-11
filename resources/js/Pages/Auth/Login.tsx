@@ -1,4 +1,4 @@
-import { useEffect, FormEventHandler, useState, SyntheticEvent } from "react";
+import { useEffect, FormEventHandler } from "react";
 import Checkbox from "@/Components/Checkbox";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
@@ -6,7 +6,6 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { useForm } from "@inertiajs/react";
 import AuthLayout from "@/Layouts/AuthLayout";
-import { PiEye, PiEyeClosedDuotone } from "react-icons/pi";
 import PasswordInput from "@/Components/PasswordInput";
 
 export default function Login({
@@ -15,7 +14,6 @@ export default function Login({
     status?: string;
     canResetPassword: boolean;
 }) {
-    const [isShow, setIsShow] = useState<boolean>(false);
     const { data, setData, post, processing, errors, reset } = useForm({
         key: "",
         password: "",
@@ -42,25 +40,27 @@ export default function Login({
                 </div>
             )}
             <div className="mt-4">
-                <InputLabel className="block mb-2 text-sm font-bold text-gray-700">
+                <InputLabel className="block mb-2 text-sm font-bold text-primary-700">
                     Username or Email Address
                 </InputLabel>
                 <TextInput
-                    className="block w-full px-4 py-2 text-gray-700 bg-gray-200 border border-gray-300 rounded appearance-none focus:outline-none focus:shadow-outline"
+                    className="block w-full px-4 py-2 border rounded appearance-none text-primary-700 bg-primary-100 border-primary-300 focus:outline-none focus:shadow-outline"
                     type="text"
                     value={data.key}
                     onChange={(e) => setData("key", e.target.value)}
+                    error={errors.key}
                 />
                 <InputError message={errors.key} className="mt-2" />
             </div>
             <div className="mt-4">
-                <InputLabel className="block mb-2 text-sm font-bold text-gray-700">
+                <InputLabel className="block mb-2 text-sm font-bold text-primary-700">
                     Password
                 </InputLabel>
                     <PasswordInput
-                        className="block w-full px-4 py-2 text-gray-700 bg-gray-200 border border-gray-300 rounded appearance-none focus:outline-none focus:shadow-outline"
+                        className="block w-full px-4 py-2 border rounded appearance-none text-primary-700 bg-primary-100 border-primary-300 focus:outline-none focus:shadow-outline"
                         value={data.password}
                         onChange={(e:React.ChangeEvent<HTMLInputElement>) => setData("password", e.target.value)}
+                        error={errors.key}
                     />
                 <InputError message={errors.password} className="mt-2" />
             </div>
@@ -71,7 +71,7 @@ export default function Login({
                         checked={data.remember}
                         onChange={(e) => setData("remember", e.target.checked)}
                     />
-                    <span className="text-sm text-gray-600 ms-2">
+                    <span className="text-sm text-primary-600 ms-2">
                         Remember me
                     </span>
                 </label>
