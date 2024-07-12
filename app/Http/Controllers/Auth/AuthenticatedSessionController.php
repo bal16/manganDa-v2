@@ -31,8 +31,10 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $user = User::where('username', '=', $request->key)->orWhere('email', '=', $request->key)->first('email');
+
+        if (! $user) return redirect()->intended(route('login'))->with('status', 'the credentials are not match wih our records');
         $request['email'] = $user->email;
-        $request->authenticate();
+        if(! $request->authenticate()) return redirect()->intended(route('login'))->with('status', 'the credentials are not match wih our records');
 
         $request->session()->regenerate();
 
