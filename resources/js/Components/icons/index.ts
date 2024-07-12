@@ -1,0 +1,5 @@
+export { default as Home } from './Home'
+export { default as Search } from './Search'
+export { default as Store } from './Store'
+export { default as Bookmark } from './Bookmark'
+export { default as Profile } from './Profile'
