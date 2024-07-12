@@ -24,6 +24,7 @@ export interface Store  {
     address: string;
     map_link: string;
     ratings: number;
+    rating?:Rating|Rating[];
     is_open: boolean;
     is_validate: boolean;
     post?: Post|Post[];
