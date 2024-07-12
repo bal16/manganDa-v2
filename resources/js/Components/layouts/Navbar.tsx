@@ -1,11 +1,6 @@
 import { PageProps } from "@/types";
 import { BiLogOut } from "react-icons/bi";
-import { FaUser } from "react-icons/fa";
-import { HiHome } from "react-icons/hi";
-import { IoCompassOutline } from "react-icons/io5";
-import { PiStorefrontDuotone } from "react-icons/pi";
-import { RiBookmarkLine } from "react-icons/ri";
-import src from "../../../images/logo.png"
+import Logo from "@images/logo.png"
 import NavLink from "@/Components/NavLink2";
 import { usePage } from "@inertiajs/react";
 
@@ -16,64 +11,43 @@ const Navbar = () => {
             <div className="grid w-full h-full md:grid-rows-[2fr_4fr_5fr_1fr] px-3 py-4 ">
                 <div className="flex -mt-10 md:hidden"></div>
                 <div className="hidden -mt-10 md:flex">
-                    <img className="w-25 border-1" src={src} />
+                    <img className="w-25 border-1" src={Logo} />
                 </div>
                 <ul className="space-y-2 font-medium ">
                     <li>
                         <NavLink
                             active={false} //route().current('home')
                             href={'#'} //route('home')
-                        >
-                            <HiHome size={"2rem"} />
-                            <span className="flex-1 ms-3 whitespace-nowrap">
-                                Home
-                            </span>
-                        </NavLink>
+                            text="Home"
+                        />
                     </li>
                     <li>
                         <NavLink
                             active={false}
                             href={'#'}
-                        >
-                            <IoCompassOutline size="2rem" />
-
-                            <span className="flex-1 ms-3 whitespace-nowrap">
-                                Explore
-                            </span>
-                        </NavLink>
+                            text="Search"
+                        />
                     </li>
                     <li>
                         <NavLink
                             active={false}
                             href={'#'}
-                        >
-                            <PiStorefrontDuotone size="2rem" />
-                            <span className="flex-1 ms-3 whitespace-nowrap">
-                                Stores
-                            </span>
-                        </NavLink>
+                            text="Store"
+                        />
                     </li>
                     <li>
                         <NavLink
                             active={false}
                             href={'#'}
-                        >
-                            <RiBookmarkLine size="2rem" className="p-1" />
-                            <span className="flex-1 ms-3 whitespace-nowrap">
-                                Bookmark
-                            </span>
-                        </NavLink>
+                            text="Bookmark"
+                       />
                     </li>
                     <li>
                         <NavLink
                             active={false}
                             href={'#'}
-                        >
-                            <FaUser size="2rem" className="p-1" />
-                            <span className="flex-1 ms-3 whitespace-nowrap">
-                                Profile
-                            </span>
-                        </NavLink>
+                            text={user.username + "'s Profile"}
+                        />
                     </li>
                 </ul>
                 <div className=""></div>

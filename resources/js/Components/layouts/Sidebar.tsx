@@ -43,19 +43,19 @@ const Sidebar = () => {
                         butuhkan.
                     </p>
                     <div className="grid gap-2 xl:grid-cols-2">
-                        <a
+                        <Link
                             href={`https://wa.me/${number}?text=${message}`}
                             target="_blank"
-                            className="block px-4 py-2 text-center rounded-full bg-green-yellow-600"
+                            className="block px-4 py-2 text-center rounded-full bg-primary-600"
                         >
                             Hubungi Kami
-                        </a>
+                        </Link>
                         {user.role_id == 3 || user.role_id == 2 ? (
                             ""
                         ) : (
                             <Link
                                 href={"#"}
-                                className="px-4 py-2 rounded-full bg-green-yellow-600"
+                                className="px-4 py-2 rounded-full bg-secondary-600"
                                 as="button"
                             >
                                 Daftar Toko
