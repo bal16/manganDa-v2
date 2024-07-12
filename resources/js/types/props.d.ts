@@ -7,6 +7,12 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
     };
 };
 
+export type MainLayoutProps = {
+    children: ReactNode;
+    auth?: PageProps;
+    title: string;
+};
+
 export type AuthLayoutProps = {
     children: ReactNode;
     title: 'Login'|'Register';
