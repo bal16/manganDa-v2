@@ -1,5 +1,5 @@
 import { ChangeEventHandler, ReactNode } from "react";
-import { User } from "./entity";
+import { User } from "@/types/entity";
 
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     auth: {
