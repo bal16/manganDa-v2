@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('store_id')->constrained()->onDelete('cascade');
+            $table->foreignId('store_id')->constrained('stores')->onDelete('cascade');
             $table->string('name');
             $table->string('image');
             $table->bigInteger('price');
