@@ -16,8 +16,8 @@ const Navbar = () => {
                 <ul className="space-y-2 font-medium ">
                     <li>
                         <NavLink
-                            active={false} //route().current('home')
-                            href={'#'} //route('home')
+                            active={route().current('home')}
+                            href={route('home')}
                             text="Home"
                         />
                     </li>
@@ -53,7 +53,7 @@ const Navbar = () => {
                 <div className=""></div>
                 <div className="space-y-2 font-medium ">
                     <NavLink
-                        href={'#'}
+                        href={route('logout')}
                         method="post"
                         as="button"
                     >
