@@ -1,7 +1,7 @@
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink2";
 const NavbarRes = () => {
     return (
-        <nav className="sticky bottom-0 w-full h-16 p-1 pb-2 text-center border-t-[0.1px] sm:hidden border-primary-950  bg-primary-50 grid grid-cols-5 ">
+        <nav className="sticky bottom-0 w-full max-w-sm mx-auto h-16 p-1 pb-2 text-center border-t-[0.1px] sm:hidden border-primary-950  flex justify-center items-center ">
             <ResponsiveNavLink active={route().current('home')} href={route('home')} icon="home" />
             <ResponsiveNavLink active={false} href="/explore" icon="search" />
 

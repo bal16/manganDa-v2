@@ -8,10 +8,9 @@ import { useEffect, useState } from "react";
 const Sidebar = () => {
     const user = usePage<PageProps>().props.auth.user;
     const number = "12345"; // ?? ISI NOMER WA UNTUK DIHUBUNGI
-    const message =
-        "Halo,Admin%0aSaya%20ingin%20tanya%20makanan%20di%20sini%3F";
-
+    const message = `Halo, Admin Saya ${user.username} ingin tanya-tanya.`;
     const [stores, setStores] = useState<Store[]>([]);
+
 //  TODO: HOW ABOUT CHANGE TO USEQUERY() HOOKS --tanstackQuery
     useEffect(() => {
         const fetchTopRatedStores = async () => {
@@ -29,7 +28,7 @@ const Sidebar = () => {
     }, []);
 
     return (
-        <aside className="hidden w-3/5 p-2 text-center border-l-[0.1px] border-primary-950 md:flex text-primary-950 bg-primary-50 sticky top-0 h-screen">
+        <aside className="hidden w-3/5 p-2 text-center border-l-[0.1px] border-primary-950 xl:flex text-primary-950 dark:text-primary-300  sticky top-0 h-screen">
             <div className="w-full h-full px-3 py-0 text-start">
                 <div className="w-full px-4 pt-3 pb-6 mb-4 border rounded-2xl border-primary-950 text-start">
                     <h3 className="text-xl font-bold">
@@ -44,9 +43,9 @@ const Sidebar = () => {
                     </p>
                     <div className="grid gap-2 xl:grid-cols-2">
                         <Link
-                            href={`https://wa.me/${number}?text=${message}`}
+                            href={`https://wa.me/${number}?text=${encodeURI(message)}`}
                             target="_blank"
-                            className="block px-4 py-2 text-center rounded-full bg-primary-600"
+                            className=" px-4 py-2 text-center rounded-full bg-primary-300 text-primary-950 hover:text-primary-300  hover:bg-primary-900   dark:hover:bg-primary-900 w-full transition-colors ease-in"
                         >
                             Hubungi Kami
                         </Link>
@@ -55,7 +54,7 @@ const Sidebar = () => {
                         ) : (
                             <Link
                                 href={"#"}
-                                className="px-4 py-2 rounded-full bg-secondary-600"
+                                className="px-4 py-2 rounded-full bg-primary-900   hover:bg-primary-700   dark:hover:bg-primary-700 w-full transition-colors ease-in"
                                 as="button"
                             >
                                 Daftar Toko

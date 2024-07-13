@@ -13,9 +13,9 @@ const NavLink = ({
         <Link
             {...props}
             className={clsx(
-                "flex items-center p-2  rounded-lg  hover:text-primary-950  hover:bg-primary-300 w-full",
-                { "text-primary-950 bg-primary-300": active == true },
-                { "text-primary-900 ": active == false },
+                "flex items-center p-2  rounded-lg  hover:text-primary-950  hover:bg-primary-900/30 backdrop-blur-sm hover:backdrop-blur-md dark:hover:text-primary-50   dark:hover:bg-primary-200/30 transition-all ease-in  ",
+                { "text-primary-950 bg-primary-900/30 dark:text-primary-50 dark:bg-primary-100/20  ": active == true },
+                { "text-primary-900 dark:text-primary-300 ": active == false },
                 className
             )}
         >

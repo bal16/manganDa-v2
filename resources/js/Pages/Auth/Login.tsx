@@ -71,7 +71,7 @@ export default function Login({
                         checked={data.remember}
                         onChange={(e) => setData("remember", e.target.checked)}
                     />
-                    <span className="text-sm text-primary-600 ms-2">
+                    <span className="text-sm text-primary-600 ms-2 dark:text-primary-300">
                         Remember me
                     </span>
                 </label>

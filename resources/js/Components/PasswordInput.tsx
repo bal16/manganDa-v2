@@ -8,19 +8,21 @@ const PasswordInput = ({
     value,
     onChange,
     className,
-    error
+    error,
+    name
 }: PasswordInputProps) => {
     const [isShow, setIsShow] = useState<boolean>(false);
     return (
         <div className="relative flex">
             <TextInput
+                name={name}
                 className={className}
                 type={!isShow ? "password" : "text"}
                 value={value}
                 onChange={onChange}
                 error={error}
             />
-            <label className="absolute flex items-center justify-center p-1 text-center transition-colors rounded-full cursor-pointer hover:bg-primary-400 right-2 top-2 hover:bg-opacity-20">
+            <label className="absolute flex items-center justify-center p-1 text-center transition-colors rounded-full cursor-pointer hover:bg-primary-400 hover:dark:bg-primary-950 right-2 top-2 hover:bg-opacity-20 ease-in">
                 <Checkbox
                     name="showPassword"
                     checked={isShow}
