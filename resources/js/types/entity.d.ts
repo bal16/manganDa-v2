@@ -47,7 +47,7 @@ export interface Post {
 }
 
 export interface Bookmark {
-    id: string;
+    id: number;
     user_id: number;
     user: User;
     post_id: number;
