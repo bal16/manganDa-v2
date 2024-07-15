@@ -11,7 +11,7 @@ class StoreLikeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreLikeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'user_id' => ['required', 'number'],
+            'post_id' => ['required', 'number'],
         ];
     }
 }
