@@ -35,7 +35,9 @@ class PostApiController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $post = Post::create($request->validated());
+
+        return response()->json($post, 201);
     }
 
     /**
@@ -51,16 +53,35 @@ class PostApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePostRequest $request, string $id)
+    public function update(UpdatePostRequest $request, string $uuid)
     {
-        //
+    $post = Post::getByUUID($uuid);
+
+        if (!$post) {
+            return response()->json([
+               'message' => 'Post not found',
+            ], 404);
+        }
+
+        $post->update($request->validated());
+
+        return response()->json($post);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $uuid)
     {
-        //
+        $post = Post::getByUUID($uuid);
+        if (!$post) {
+            return response()->json([
+               'message' => 'Post not found',
+            ], 404);
+        }
+        $post->delete();
+        return response()->json([
+           'message' => 'Post deleted successfully',
+        ], 204);
     }
 }
