@@ -14,12 +14,12 @@ class Bookmark extends Model
 
     public function user(): HasOne
     {
-        return $this->hasOne(User::class, 'user_id');
+        return $this->hasOne(User::class, 'id   ','user_id');
     }
 
     public function post(): HasOne
     {
-        return $this->hasOne(Post::class, 'post_id');
+        return $this->hasOne(Post::class, 'id', 'post_id');
     }
 
 }
