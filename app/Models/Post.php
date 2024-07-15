@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Post extends Model
@@ -20,47 +20,51 @@ class Post extends Model
             $model->uuid = (string) Str::uuid();
         });
     }
+    public static function withRelation()
+    {
+        return static::with(['user','store','likes','bookmarks']);
+    }
     public static function getByUUID($uuid)
     {
-        return static::where('uuid', $uuid);
+        return static::withRelation()->where('uuid', $uuid)->first();
     }
     public static function search($query)
     {
-        return static::where('body', 'LIKE', "%{$query}%");
+        return static::withRelation()->where('body', 'LIKE', "%{$query}%");
     }
 
-    public function user(): HasOne
+    public function user(): BelongsTo
     {
-        return $this->hasOne(User::class, 'user_id');
+        return $this->belongsTo(User::class,'user_id');
     }
 
-    public function store(): HasOne
+    public function store(): BelongsTo
     {
-        return $this->hasOne(Store::class,'store_id');
+        return $this->belongsTo(Store::class,'store_id');
     }
 
-    public function bookmarks(): BelongsTo
+    public function bookmarks(): HasMany
     {
-        return $this->belongsTo(Bookmark::class,'post_id');
+        return $this->hasMany(Bookmark::class,'post_id');
     }
 
-    public function ratings(): BelongsTo
+    public function ratings(): HasMany
     {
-        return $this->belongsTo(Rating::class,'post_id');
+        return $this->hasMany(Rating::class,'post_id');
     }
 
-    public function reports(): BelongsTo
+    public function reports(): HasMany
     {
-        return $this->belongsTo(Report::class,'post_id');
+        return $this->hasMany(Report::class,'post_id');
     }
 
-    public function comments(): BelongsTo
+    public function comments(): HasMany
     {
-        return $this->belongsTo(Comment::class,'post_id');
+        return $this->hasMany(Comment::class,'post_id');
     }
 
-    public function likes(): BelongsTo
+    public function likes(): HasMany
     {
-        return $this->belongsTo(Like::class,'post_id');
+        return $this->hasMany(Like::class,'post_id');
     }
 }

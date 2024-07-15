@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\User;
 
 class PostApiController extends Controller
 {
@@ -14,8 +15,20 @@ class PostApiController extends Controller
      */
     public function index()
     {
-        //
+        $perPage = request()->limit ?? 10;
+
+        $post = Post::withRelation();
+
+        if (request()->has('u')) {
+            $user = User::where('username', '=', request()->u)->firstOrFail();
+            $post->where('user_id', '=', $user->id);
+        } elseif (request()->has('q')) {
+            $post = Post::search(request()->q);
+        }
+
+        return response()->json($post->paginate($perPage)->withQueryString());
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -28,9 +41,11 @@ class PostApiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $uuid)
     {
-        //
+        return response()->json(
+            Post::getByUUID($uuid)
+        );
     }
 
     /**
