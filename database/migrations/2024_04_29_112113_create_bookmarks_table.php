@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bookmarks', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('post_id')->constrained('posts')->onDelete('cascade');
             // $table->unsignedBigInteger('user_id');
