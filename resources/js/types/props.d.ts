@@ -23,4 +23,5 @@ export type PasswordInputProps = {
     onChange: ChangeEventHandler;
     className: string;
     error?: string;
+    name?: string;
 };
