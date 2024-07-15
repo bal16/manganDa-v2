@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 
-type Theme = "media" | "light" | "dark";
+type Theme = "media" | "light" | "dark" | "";
 
 const useTheme = () => {
     const [theme, setTheme] = useState<Theme>("media");
+    const prefersDarkMode = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+    ).matches;
 
     // Toggle theme based on user preference
     const toggleTheme = () => {
         const newTheme =
             theme === "media" ? "light" : theme === "light" ? "dark" : "media";
         setTheme(newTheme);
-
         // Update CSS class and localStorage accordingly
         if (newTheme === "light") {
             document.documentElement.classList.remove("dark");
@@ -34,9 +36,6 @@ const useTheme = () => {
         }
 
         // Fallback to system preference
-        const prefersDarkMode = window.matchMedia(
-            "(prefers-color-scheme: dark)"
-        ).matches;
         prefersDarkMode
             ? document.documentElement.classList.add("dark")
             : document.documentElement.classList.remove("dark");
@@ -54,10 +53,14 @@ const useTheme = () => {
             }
         } else {
             localStorage.removeItem("colorMode");
+            prefersDarkMode
+                ? document.documentElement.classList.add("dark")
+                : document.documentElement.classList.remove("dark");
         }
     }, [theme]);
 
-    return { theme, toggleTheme };
+
+  return { theme, toggleTheme };
 };
 
 export default useTheme;

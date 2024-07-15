@@ -1,8 +1,10 @@
+import useTheme from "@/Hooks/useTheme";
 import { AuthLayoutProps } from "@/types";
 import { Head, Link } from "@inertiajs/react";
 
 
 export default function AuthLayout({ children, title }: AuthLayoutProps) {
+    useTheme()
     return (
         <div className="min-h-screen py-16 bg-primary-700 dark:bg-primary-900 place-content-center ">
             <Head title={title} />
