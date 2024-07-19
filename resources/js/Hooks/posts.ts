@@ -1,7 +1,7 @@
 import { PaginatedDatas, Post } from "@/types";
-import { QueryKey, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 export const usePosts = (url = "/api/posts") => {
     // const [posts, setPosts] = useState<Post[]>();
@@ -29,11 +29,11 @@ export const usePosts = (url = "/api/posts") => {
     //     isLoading: isLoading,
     // };
     const posts = useQuery({
+        queryKey: ['url', url],
         queryFn: async () => {
             const response = await axios.get<PaginatedDatas>(url);
             return response.data;
         },
-        queryKey: ['url', url],
     });
 
     return posts;
